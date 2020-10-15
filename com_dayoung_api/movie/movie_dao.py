@@ -1,20 +1,20 @@
 import mysql.connector
-from bumsu_sba_api.ext.db import config
+from com_dayoung_api.ext.db import config
 
 
-class ItemDao:
+class MovieDao:
     
     def __init__(self):
         self.connector  = mysql.connector.connect(**config)
         self.cursor = self.connector.cursor(dictionary=True)
 
 
-    def select_items(self):
+    def select_movies(self):
         cur = self.cursor
         con = self.connector
         rows = []
         try:
-            cur.execute('select * from food',)
+            cur.execute('select * from movies',)
             rows = cur.fetchall()
             for row in rows:
                 print(f'price is : {str(row["price"])}')
@@ -29,6 +29,6 @@ class ItemDao:
         return rows
 
 print('---2---')
-dao = ItemDao()
-dao.select_items()
+dao = MovieDao()
+dao.select_movies()
     

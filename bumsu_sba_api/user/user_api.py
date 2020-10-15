@@ -1,3 +1,0 @@
-class UserApi:
-    def __init__(self):
-        ...

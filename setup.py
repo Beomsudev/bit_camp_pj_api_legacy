@@ -4,7 +4,7 @@ with open("README.md","r") as fh:
     long_description  = fh.read()
 
 setuptools.setup(
-    name='bumsu_sba_api',
+    name='com_dayoung_api',
     version='1.0',
     description='Python Distribution Utilities',
     long_description=long_description,

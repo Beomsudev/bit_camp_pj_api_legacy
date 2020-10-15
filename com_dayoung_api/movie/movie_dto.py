@@ -1,3 +1,3 @@
-class UserDao:
+class MovieDto:
     def __init__(self):
         ...
