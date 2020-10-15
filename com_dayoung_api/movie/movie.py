@@ -28,7 +28,7 @@ class Movie(Base):
             actor=\'{self.actor}\',\
             keyword=\'{self.keyword}\',)'
 
-engine = create_engine('mysql+mysqlconnector://root:1347@127.0.0.1/mariadb?charset=utf8', encoding='utf8', echo=True)
+engine = create_engine('mysql+mysqlconnector://root:root@127.0.0.1/mariadb?charset=utf8', encoding='utf8', echo=True)
 # Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()

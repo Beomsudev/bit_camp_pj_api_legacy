@@ -3,7 +3,7 @@ Base = declarative_base()
 
 config = {
     'user' : 'root',
-    'password' : '1347',
+    'password' : 'root',
     'host': 'localhost',
     'port' : '3306',
     'database' : 'mariadb'
