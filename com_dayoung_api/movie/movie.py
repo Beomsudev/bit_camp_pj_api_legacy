@@ -2,6 +2,11 @@ from com_dayoung_api.ext.db import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.dialects.mysql import DECIMAL, VARCHAR, LONGTEXT
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+baseurl = os.path.dirname(os.path.abspath(__file__))
+from com_dayoung_api.utils.file_helper import FileReader
 
 class Movie(Base):
     __tablename__ = "movies"
@@ -28,6 +33,12 @@ class Movie(Base):
             actor=\'{self.actor}\',\
             keyword=\'{self.keyword}\',)'
 
+class MovieData:
+    def __init__(self):
+        print(f'baseurl #### {baseurl}')
+        self.reader = FileReader()
+
+        
 engine = create_engine('mysql+mysqlconnector://root:root@127.0.0.1/mariadb?charset=utf8', encoding='utf8', echo=True)
 # Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)

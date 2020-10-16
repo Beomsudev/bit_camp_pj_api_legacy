@@ -28,7 +28,7 @@ class FileReader:
         return os.path.join(self.context,self.fname)
 
     def csv_to_dframe(self) -> object:
-        return pd.read_csv(self.new_file(), encoding='UTF-8', thousands=',')
+        return pd.read_csv(self.new_file(), encoding='latin1', thousands=',')
 
     def xls_to_dframe(self, header, usecols) -> object:
         print(f'PANDAS VERSION: {pd.__version__}')
