@@ -27,8 +27,14 @@ class FileReader:
     def new_file(self) -> str:
         return os.path.join(self.context,self.fname)
 
-    def csv_to_dframe(self) -> object:
-        return pd.read_csv(self.new_file(), encoding='latin1', thousands=',')
+    def csv_to_dframe_utf_8(self) -> object:
+        return pd.read_csv(self.new_file(), encoding='utf-8', thousands=',', engine='python')
+
+    def csv_to_dframe_euc_kr(self) -> object:
+        return pd.read_csv(self.new_file(), encoding='euc-kr', thousands=',', engine='python')
+
+    def csv_to_dframe_la(self) -> object:
+        return pd.read_csv(self.new_file(), encoding='euc-kr', thousands=',', engine='python')    
 
     def xls_to_dframe(self, header, usecols) -> object:
         print(f'PANDAS VERSION: {pd.__version__}')

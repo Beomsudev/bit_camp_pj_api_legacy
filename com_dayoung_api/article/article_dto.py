@@ -23,3 +23,7 @@ class Article(Base):
 engine = create_engine('mysql+mysqlconnector://root:1347@127.0.0.1/mariadb?charset=utf8', encoding='utf8', echo=True)
 Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
+
+class ArticleDto:
+    def __init__(self):
+        ...
