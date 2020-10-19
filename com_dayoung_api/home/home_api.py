@@ -1,3 +1,0 @@
-class HomeApi:
-    def __init__(self):
-        ...

@@ -1,8 +1,26 @@
 from flask import Flask
-from flask_jwt import JWT
 from flask_restful import Api
+from com_dayoung_api.ext.db import url, db
+from com_dayoung_api.ext.routes import initialize_routes
 
-from config import postgresqlConfig
-from resources.item import Item, ItemList
-from resources.store import Store, StoreList
-from resources.user import UserRegister
+from com_dayoung_api.movie.api import Movie, Movies
+from com_dayoung_api.review.api import Review, Reviews
+from com_dayoung_api.user.api import User, Users
+from com_dayoung_api.actor.api import Actor, Actors
+
+app = Flask(__name__)
+print('========== url ==========')
+print(url)
+app.config['SQLALCHEMY_DATABASE_URI'] = url
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
+api = Api(app)
+
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+initialize_routes(api)
+
+with app.app_context():
+    db.create_all()

@@ -1,3 +1,0 @@
-class ArticleApi:
-    def __init__(self):
-        ...
