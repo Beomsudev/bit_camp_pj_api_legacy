@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Api
+from flask_cors import CORS
 from com_dayoung_api.ext.db import url, db
 from com_dayoung_api.ext.routes import initialize_routes
 
@@ -9,6 +10,7 @@ from com_dayoung_api.user.api import User, Users
 from com_dayoung_api.actor.api import Actor, Actors
 
 app = Flask(__name__)
+CORS(app)
 print('========== url ==========')
 print(url)
 app.config['SQLALCHEMY_DATABASE_URI'] = url
@@ -24,3 +26,7 @@ initialize_routes(api)
 
 with app.app_context():
     db.create_all()
+
+@app.route('/api/test')
+def test():
+    return {'test':'SUCCESS'}
