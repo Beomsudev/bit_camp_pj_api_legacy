@@ -33,9 +33,6 @@ class FileReader:
     def csv_to_dframe_euc_kr(self) -> object:
         return pd.read_csv(self.new_file(), encoding='euc-kr', thousands=',', engine='python')
 
-    def csv_to_dframe_la(self) -> object:
-        return pd.read_csv(self.new_file(), encoding='euc-kr', thousands=',', engine='python')    
-
     def xls_to_dframe(self, header, usecols) -> object:
         print(f'PANDAS VERSION: {pd.__version__}')
         return pd.read_excel(self.new_file(), header = header, usecols = usecols)

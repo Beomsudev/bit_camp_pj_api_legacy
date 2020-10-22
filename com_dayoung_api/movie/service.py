@@ -34,7 +34,7 @@ class MovieService:
         # print(data)
         # print('***********')
         # data = data.head()
-        # print(data)
+        print(data)
 
         return data
 
@@ -48,9 +48,6 @@ class MovieService:
     #     print(data)
     #     return data
 
-# if __name__ == "__main__":
-#     service = MovieService()
-#     service.hook()
-# path = os.path.abspath("")
-# fname = '\data\kmdb_csv_modify4.csv'
-# pd.read_csv(path + fname)
+if __name__ == "__main__":
+    service = MovieService()
+    service.hook()

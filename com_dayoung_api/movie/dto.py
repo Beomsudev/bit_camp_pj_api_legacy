@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy import create_engine
 from com_dayoung_api.movie.service import MovieService
 
-
 from com_dayoung_api.utils.file_helper import FileReader
 
 config = {
@@ -35,7 +34,7 @@ class MovieDto(db.Model):
     keyword : str = db.Column(db.String(30))
     plot : str = db.Column(db.String(30))
 
-    def __init__(self, id, title, genre, country, year, company, director, actor, date, running_time, keyword, plot):
+    def __init__(self, id, title, genre, country, year, compacompanyny, director, actor, date, running_time, keyword, plot):
         self.id = id
         self.title = title
         self.genre = genre
@@ -50,19 +49,19 @@ class MovieDto(db.Model):
         self.plot = plot
 
 
-    # def __repr__(self):
-    #     return f'Movie(id=\'{self.id}\',\
-    #         title=\'{self.title}\',\
-    #         genre=\'{self.genre}\',\
-    #         country=\'{self.country}\',\
-    #         year=\'{self.year}\',\
-    #         company=\'{self.company}\',\
-    #         director=\'{self.director}\',\
-    #         actor=\'{self.actor}\',\
-    #         date=\'{self.date}\',\
-    #         running_time=\'{self.running_time}\',\
-    #         keyword=\'{self.keyword}\',\
-    #         plot=\'{self.plot}\',)'
+    def __repr__(self):
+        return f'Movie(id=\'{self.id}\',\
+            title=\'{self.title}\',\
+            genre=\'{self.genre}\',\
+            country=\'{self.country}\',\
+            year=\'{self.year}\',\
+            company=\'{self.company}\',\
+            director=\'{self.director}\',\
+            actor=\'{self.actor}\',\
+            date=\'{self.date}\',\
+            running_time=\'{self.running_time}\',\
+            keyword=\'{self.keyword}\',\
+            plot=\'{self.plot}\',)'
 
     @property
     def json(self):
@@ -88,8 +87,6 @@ class MovieDto(db.Model):
     def delete(self):
         db.session.delete(self)
         db.session.commit()
-
-
 
 service = MovieService()
 Session = sessionmaker(bind=engine)
