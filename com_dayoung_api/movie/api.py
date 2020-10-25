@@ -9,5 +9,3 @@ class Movie(Resource):
 
 class Movies(Resource):
     ...
-
-
