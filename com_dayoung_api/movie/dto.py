@@ -5,23 +5,24 @@ from com_dayoung_api.movie.search import NaverMovie
 import pandas as pd
 from com_dayoung_api.utils.file_helper import FileReader
 
-config = {
-    'user' : 'root',
-    'password' : 'root',
-    'host': '127.0.0.1',
-    'port' : '3306',
-    'database' : 'dayoungdb'
-}
-charset = {'utf8':'utf8'}
-url = f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}?charset=utf8"
-engine = create_engine(url)
+# config = {
+#     'user' : 'root',
+#     'password' : 'root',
+#     'host': '127.0.0.1',
+#     'port' : '3306',
+#     'database' : 'dayoungdb'
+# }
+# charset = {'utf8':'utf8'}
+# url = f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}?charset=utf8"
+# engine = create_engine(url)
 
 class MovieDto(db.Model):
     
     __tablename__ = 'movies'
     __table_args__= {'mysql_collate':'utf8_general_ci'}
+
     # ,id,title,subtitle,description,imageurl,year,rating
-    id : str = db.Column(db.String(10), primary_key = True, index = True)
+    movieid : str = db.Column(db.String(10), primary_key = True, index = True)
     title : str = db.Column(db.String(30))
     subtitle : str = db.Column(db.String(30))
     description : str = db.Column(db.String(200))
@@ -29,8 +30,8 @@ class MovieDto(db.Model):
     year : str = db.Column(db.String(5))
     rating : float = db.Column(db.Float)
 
-    def __init__(self,id,title,subtitle,description,imageurl,year,rating):
-        self.id = id
+    def __init__(self,movieid,title,subtitle,description,imageurl,year,rating):
+        self.movieid = movieid
         self.title = title
         self.subtitle = subtitle
         self.description = description
@@ -39,7 +40,7 @@ class MovieDto(db.Model):
         self.rating = rating
 
     # def __repr__(self):
-    #     return f'Movie(id=\'{self.id}\',\
+    #     return f'Movie(movieid=\'{self.movieid}\',\
     #         title=\'{self.title}\',\
     #         genre=\'{self.genre}\',\
     #         country=\'{self.country}\',\
@@ -55,7 +56,7 @@ class MovieDto(db.Model):
     @property
     def json(self):
         return {
-            'id' : self.id,
+            'movieid' : self.movieid,
             'title' : self.title,
             'subtitle' : self.subtitle,
             'description' : self.description,

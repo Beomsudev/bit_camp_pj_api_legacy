@@ -10,7 +10,6 @@ class ActorDto(db.Model):
     sample2 : str = db.Column(db.String(30))
 
 
-    articles = db.relationship('ArticleModel', lazy='dynamic')
 
     def __init__(self, id, sample1, genre):
         self.id = id

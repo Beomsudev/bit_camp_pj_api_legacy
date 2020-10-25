@@ -311,6 +311,7 @@ class NaverMovie:
         sort_df = drop_df[['id', 'title', 'genre', 'keyword', 'image_naver', 'year', 'userrating_naver']]
         
         ui_json_columns = {
+            'id':'movieid',
             'genre':'subtitle',
             'keyword':'description',
             'image_naver':'imageurl',
