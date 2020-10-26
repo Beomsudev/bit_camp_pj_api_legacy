@@ -3,7 +3,7 @@ from com_dayoung_api.movie.api import Movie, Movies
 from com_dayoung_api.review.api import Review, Reviews
 from com_dayoung_api.actor.api import Actor, Actors
 from com_dayoung_api.user.api import User, Users, Auth, Access
-from com_sba_api.item.api import Item, Items
+from com_dayoung_api.item.api import Item, Items
 
 def initialize_routes(api):
     print('========== 2 ==========')
