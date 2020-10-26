@@ -1,11 +1,13 @@
 # revision history
 # dayoung team requirements V1.0 / 1016 - first made
+# V2.0 / 1026 - flask-cors==3.0.9 추가 김범수
 
 click==7.1.2
 config==0.5.0.post0
 flask==1.1.2
 flask-jwt==0.3.2
 flask-restful==0.3.8
+flask-cors==3.0.9
 itsdangerous==1.1.0
 keras==2.4.3
 keras-preprocessing==1.1.2

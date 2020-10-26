@@ -5,16 +5,16 @@ from com_dayoung_api.movie.search import NaverMovie
 import pandas as pd
 from com_dayoung_api.utils.file_helper import FileReader
 
-# config = {
-#     'user' : 'root',
-#     'password' : 'root',
-#     'host': '127.0.0.1',
-#     'port' : '3306',
-#     'database' : 'dayoungdb'
-# }
-# charset = {'utf8':'utf8'}
-# url = f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}?charset=utf8"
-# engine = create_engine(url)
+config = {
+    'user' : 'root',
+    'password' : 'root',
+    'host': '127.0.0.1',
+    'port' : '3306',
+    'database' : 'dayoungdb'
+}
+charset = {'utf8':'utf8'}
+url = f"mysql+mysqlconnector://{config['user']}:{config['password']}@{config['host']}:{config['port']}/{config['database']}?charset=utf8"
+engine = create_engine(url)
 
 class MovieDto(db.Model):
     
@@ -73,11 +73,11 @@ class MovieDto(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-# search = NaverMovie()
-# Session = sessionmaker(bind=engine)
-# s = Session()
-# df = search.hook()
-# print(df.head())
-# s.bulk_insert_mappings(MovieDto, df.to_dict(orient="records"))
-# s.commit()
-# s.close()
+search = NaverMovie()
+Session = sessionmaker(bind=engine)
+s = Session()
+df = search.hook()
+print(df.head())
+s.bulk_insert_mappings(MovieDto, df.to_dict(orient="records"))
+s.commit()
+s.close()
