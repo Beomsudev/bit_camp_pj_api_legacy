@@ -1,19 +1,46 @@
-from com_dayoung_api.home.api import Home
-from com_dayoung_api.movie.api import Movie, Movies
-from com_dayoung_api.review.api import Review, Reviews
-from com_dayoung_api.actor.api import Actor, Actors
-from com_dayoung_api.user.api import User, Users, Auth, Access
-from com_dayoung_api.item.api import Item, Items
+import logging
+from flask import Blueprint
+from flask_restful import Api
+from com_dayoung_api.resources.home import Home
+from com_dayoung_api.resources.movie import Movie, Movies
+from com_dayoung_api.resources.review import Review, Reviews
+# from com_dayoung_api.resources.actor import Actor, Actors
+from com_dayoung_api.resources.user import User, Users, Auth, Access
+from com_dayoung_api.resources.item import Item, Items
+
+home = Blueprint('home', __name__, url_prefix='/api')
+user = Blueprint('user', __name__, url_prefix='/api/user')
+users = Blueprint('users', __name__, url_prefix='/api/users')
+auth = Blueprint('auth', __name__, url_prefix='/api/auth')
+access = Blueprint('access', __name__, url_prefix='/api/access')
+movie = Blueprint('movie', __name__, url_prefix='/api/movie')
+movies = Blueprint('movies', __name__, url_prefix='/api/movies')
+review = Blueprint('review', __name__, url_prefix='/api/review')
+reviews = Blueprint('reviews', __name__, url_prefix='/api/reviews')
+actor = Blueprint('actor', __name__, url_prefix='/api/actor')
+actors = Blueprint('actors', __name__, url_prefix='/api/actors')
+
+api = Api(home)
+api = Api(user)
+api = Api(users)
+api = Api(auth)
+api = Api(access)
+api = Api(movie)
+api = Api(movies)
+api = Api(review)
+api = Api(reviews)
+# api = Api(actor)
+# api = Api(actors)
 
 def initialize_routes(api):
     print('========== 2 ==========')
     api.add_resource(Home, '/api')
-    api.add_resource(Movie, '/Movie/<string:id>')
-    api.add_resource(Movies, '/Movies')
-    api.add_resource(Review, '/Review<string:id>')
-    api.add_resource(Reviews, '/Reviews')
-    api.add_resource(Actor, '/Actor<string:id>')
-    api.add_resource(Actors, '/Actors')
+    api.add_resource(Movie, '/api/movie/<string:id>')
+    api.add_resource(Movies, '/api/movies')
+    api.add_resource(Review, '/api/review<string:id>')
+    api.add_resource(Reviews, '/api/reviews')
+    # api.add_resource(Actor, '/api/actor<string:id>')
+    # api.add_resource(Actors, '/api/actors')
     api.add_resource(User, '/api/user/<string:id>')
     api.add_resource(Users, '/api/users')
     api.add_resource(Auth, '/api/auth')
@@ -21,3 +48,24 @@ def initialize_routes(api):
     api.add_resource(Item, '/api/item/<string:id>')
     api.add_resource(Items,'/api/items')
 
+
+
+@user.errorhandler(500)
+def user_api_error(e):
+    logging.exception('An error occurred during user request. %s' % str(e))
+    return 'An internal error occurred.', 500
+
+@home.errorhandler(500)
+def home_api_error(e):
+    logging.exception('An error occurred during home request. %s' % str(e))
+    return 'An internal error occurred.', 500
+
+@review.errorhandler(500)
+def review_api_error(e):
+    logging.exception('An error occurred during review request. %s' % str(e))
+    return 'An internal error occurred.', 500
+
+@movie.errorhandler(500)
+def movie_api_error(e):
+    logging.exception('An error occurred during movie request. %s' % str(e))
+    return 'An internal error occurred.', 500
